@@ -1,5 +1,7 @@
 // Importa a classe Scanner para leitura de dados do usuário
 import java.util.Scanner;
+// Importa a classe ArrayList para trabalhar com listas
+import java.util.ArrayList;
 
 public class ExemploBasicoJava {
     // Método principal, ponto de entrada do programa
@@ -57,12 +59,79 @@ public class ExemploBasicoJava {
             System.out.println("Número: " + numero);
         }
 
+        // Trabalhando com listas
+        ArrayList<String> listaNomes = new ArrayList<>();
+        listaNomes.add("Alice");
+        listaNomes.add("Bob");
+        listaNomes.add("Charlie");
+
+        System.out.println("Nomes na lista:");
+        for (String nome : listaNomes) {
+            System.out.println(nome);
+        }
+
         // Leitura de dados do usuário
         System.out.print("Digite seu nome: ");
-        String nome = scanner.nextLine();
-        System.out.println("Olá, " + nome);
+        String nomeUsuario = scanner.nextLine();
+        System.out.println("Olá, " + nomeUsuario);
 
         // Fechando o scanner
         scanner.close();
+
+        // Chamando um método
+        saudacaoPersonalizada(nomeUsuario);
+
+        // Manipulação de objetos
+        Pessoa pessoa = new Pessoa("João", 25);
+        System.out.println("Nome: " + pessoa.getNome());
+        System.out.println("Idade: " + pessoa.getIdade());
+
+        // Tratamento de exceções
+        try {
+            int resultado = dividir(10, 0);
+            System.out.println("Resultado da divisão: " + resultado);
+        } catch (ArithmeticException e) {
+            System.out.println("Erro: Divisão por zero!");
+        }
+    }
+
+    // Método para exibir uma saudação personalizada
+    public static void saudacaoPersonalizada(String nome) {
+        System.out.println("Bem-vindo, " + nome + "!");
+    }
+
+    // Método para dividir dois números com tratamento de exceção
+    public static int dividir(int a, int b) throws ArithmeticException {
+        return a / b;
+    }
+}
+
+// Classe Pessoa com atributos e métodos
+class Pessoa {
+    private String nome;
+    private int idade;
+
+    // Construtor da classe Pessoa
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    // Métodos getters
+    public String getNome() {
+        return nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    // Métodos setters
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 }
